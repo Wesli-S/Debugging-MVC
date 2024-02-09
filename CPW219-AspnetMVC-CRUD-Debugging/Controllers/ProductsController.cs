@@ -21,6 +21,7 @@ namespace CPW219_AspnetMVC_CRUD_Debugging.Controllers
             return View(product);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -33,6 +34,7 @@ namespace CPW219_AspnetMVC_CRUD_Debugging.Controllers
             {
                 _context.Product.AddAsync(product);
                 await _context.SaveChangesAsync();
+                ViewData["Message"] = $"{product.Name} was added successfully!";
                 return View();
             }
             return View(product);
